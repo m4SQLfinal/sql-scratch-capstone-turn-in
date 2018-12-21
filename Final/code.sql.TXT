@@ -1,0 +1,42 @@
+      Question 1)	Question 2) & 3)
+      SELECT *		select count (question), question
+      FROM quiz		from survey
+      LIMIT 10;		group by question;
+      
+      Question 4)
+      select * from quiz limit 5;
+      select * from home_try_on limit 5;
+      select * from purchase limit 5;
+      
+      Question 5)
+      SELECT DISTINCT q.user_id,
+         h.user_id IS NOT NULL AS 'is_home_try_on',
+         h.number_of_pairs,
+         p.user_id IS NOT NULL AS 'is_purchase'
+      FROM quiz q
+      LEFT JOIN home_try_on h
+         ON q.user_id = h.user_id
+      LEFT JOIN purchase p
+         ON p.user_id = q.user_id
+      LIMIT 10;
+      
+      Question 6)
+      SELECT count (h.number_of_pairs), q.user_id,
+         h.user_id IS NOT NULL AS 'is_home_try_on',
+         p.user_id IS NOT NULL AS 'is_purchase'
+      FROM quiz q
+      JOIN home_try_on h
+         ON q.user_id = h.user_id
+      JOIN purchase p
+         ON p.user_id = q.user_id
+         where h.number_of_pairs = '3 pairs';
+      SELECT count (h.number_of_pairs), q.user_id,
+         h.user_id IS NOT NULL AS 'is_home_try_on',
+         p.user_id IS NOT NULL AS 'is_purchase'
+      FROM quiz q
+      JOIN home_try_on h
+         ON q.user_id = h.user_id
+      JOIN purchase p
+         ON p.user_id = q.user_id
+         where h.number_of_pairs = '5 pairs';
+
